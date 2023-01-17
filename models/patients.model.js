@@ -18,9 +18,11 @@ const patientSchema = mongoose.Schema({
     },
   },
 
-  phone_number: { type: Number, required: true, min: 10 },
+  phone_number: { type: String, required: true, min: 10 },
   password: { type: String, required: true, min: 8, max: 15 },
   patient_photo: { type: String, required: true },
+  hospital_id: { type: Number, required: true },
+  psychiatrist_id: { type: Number, required: true },
 });
 
 const PatientModel = mongoose.model("patient_details", patientSchema);
