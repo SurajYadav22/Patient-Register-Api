@@ -7,12 +7,12 @@ const register = async (req, res) => {
     if (patient_data) {
       const patient = new PatientModel(patient_data);
       await patient.save();
-      res.send({ status: 200, message: "Register successfull" });
+      res.send({ status: 201, message: "Register successfull" });
     } else {
-      res.send({ status: 502, message: "Please fill all details" });
+      res.send({ status: 400, message: "Please fill all details" });
     }
   } catch (error) {
-    res.status(500).send({ error: error });
+    res.status(500).send({ error: error, message: "Internal Server Error." });
   }
 };
 

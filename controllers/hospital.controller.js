@@ -2,6 +2,8 @@ import { HospitalModel } from "../models/hospital.model.js";
 import { PatientModel } from "../models/patients.model.js";
 import { PsychiatristModel } from "../models/psychiatrist.model.js";
 
+// fetching the hospital details from the database
+
 const fetchHospital = async (req, res) => {
   const { id } = req.query;
   let hospital_id = id;
@@ -40,17 +42,22 @@ const fetchHospital = async (req, res) => {
         });
       } else {
         res.send({
-          status: 200,
+          status: 404,
           data: "Hospital details is not available",
         });
       }
     } else {
-      res.send({ status: 404, message: "Hospital id is not available" });
+      res.send({
+        status: 404,
+        message: "Hospital id is not available, pass the hospital id in query.",
+      });
     }
   } catch (error) {
-    res.send({ status: 500, message: error });
+    res.send({ status: 500, message: "Internal servere error." });
   }
 };
+
+// <---------------------------------------------------function for adding a new hospital in database -------------------------------->
 
 const addHospitl = async (req, res) => {
   const hospital_data = req.body;
@@ -59,12 +66,15 @@ const addHospitl = async (req, res) => {
     if (hospital_data) {
       const hospital = new HospitalModel(hospital_data);
       await hospital.save();
-      res.send({ status: 200, message: "Hospital added successfully" });
+      res.send({ status: 201, message: "Hospital added successfully" });
     } else {
-      res.send({ status: 502, message: "Please fill all details" });
+      res.send({ status: 400, message: "Please fill all details" });
     }
   } catch (error) {
-    res.status(500).send({ error: error });
+    res.status(500).send({
+      error: error,
+      message: "Internal Server Error. Please try again later.",
+    });
   }
 };
 
