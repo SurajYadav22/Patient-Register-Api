@@ -19,5 +19,7 @@
 - By "/all?id=3" end point, If you want to fetch all hospital data you have to pass hospital id in query e.g (id=1). There are only 4 hospital so you can use any one of these(1, 2, 3, 4).
 
 
+# Deployed link 👉 https://patient-register-api.onrender.com
+
 # Postman documents 👉  https://documenter.getpostman.com/view/22894778/2s8ZDVZ3UF#8edd9574-0382-456b-9a66-124b81400f1c
  
