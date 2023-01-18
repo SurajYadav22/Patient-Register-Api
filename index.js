@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.use(route);
 
-const port = 5000 || process.env.PORT;
+const port = 5000;
 
 app.listen(port, async () => {
   try {
